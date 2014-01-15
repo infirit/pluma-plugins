@@ -38,16 +38,16 @@
 #   /usr/lib/python2.6/textwrap.py when loading the plugin. Unfortunately
 #   i have no real clue what actualy is causing this conflict. This might
 #   be reasoned by a change in the Gedit Python Plugin Loader, as this has
-#   not been happening before upgrading gedit or a prerequisite of it through
+#   not been happening before upgrading pluma or a prerequisite of it through
 #   an upgrade of my Ubuntu to 8.10 or 9.04. Added a couple documentst mainly
-#   to ease the burdon of installation for gedit plugin beginners and made it
-#   public available on my company website: http://hartmann-it-design.de/gedit
+#   to ease the burdon of installation for pluma plugin beginners and made it
+#   public available on my company website: http://hartmann-it-design.de/pluma
 
 
 
 
 # import basic requisites
-import gedit
+import pluma
 import gtk
 
 # for the texts in the UI elements we use gettext (do we realy?)
@@ -91,7 +91,7 @@ class ToggleTextWrapHelper:
         _initial_toggle_state_default = True
 
         # Get initial state from word wrapping in this view (not available
-        # on gedit startup but if plugin is enabled during the gedit session
+        # on pluma startup but if plugin is enabled during the pluma session
         # and for what ever reason we do not have an update ui signal on init)
         _active_view = self._window.get_active_view()
         try:
@@ -212,10 +212,10 @@ class ToggleTextWrapHelper:
 
 
 # define the plugin derivate class
-class ToggleTextWrapPlugin(gedit.Plugin):
+class ToggleTextWrapPlugin(pluma.Plugin):
 
     def __init__(self):
-        gedit.Plugin.__init__(self)
+        pluma.Plugin.__init__(self)
         self._instances = {}
 
 
