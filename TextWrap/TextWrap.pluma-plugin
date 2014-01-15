@@ -1,4 +1,4 @@
-[Gedit Plugin]
+[Pluam Plugin]
 Loader=python
 Module=TextWrap
 IAge=2
