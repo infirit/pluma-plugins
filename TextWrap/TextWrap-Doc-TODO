@@ -1,0 +1,14 @@
+email adresse einrichten: gedit@hartmann-it-design.de
+
+
+add at least german translation to gedit-plugin file
+shall it have a english (us english) entries then too?
+include a setup dialog to setup (eg.
+    use heuristic method to en- or disable text wrap for source code and non-source code files)
+    use a persistent (ie. over restart) per file memory of textwrap setting by this plugin
+    set the keyboard shortcut to whatever you like
+        for the time we might have it inside a file beside the 'executable'?
+shall have a better icon than gtk-stock-ok
+shall have more translations than to german
+    use ubuntu launchpad for that?
+might have a status indicator in the status bar (if toolbar is disabled)

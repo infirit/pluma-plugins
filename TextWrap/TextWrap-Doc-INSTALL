@@ -1,0 +1,86 @@
+
+Other Nice plugin:
+http://www.tuxradar.com/content/save-time-gedit-snippets
+
+
+
+<a href="./TextWrap-0.2.1.tar.gz">Download</a> the TextWrap and store and unpack the archiv to a place of your choice (your home directory is used herein as an example)
+
+General procedure:
+* download the archiv
+* unpack the archiv
+* create your personal gedit plugin directory if it does not exists
+* copy files needed to your personal gedit plugin directory
+* activate the plugin
+
+
+The procedure in commands (after download):
+
+From inside your ( Applications -> Accesories -> ) Terminal application type:
+
+$ cd
+$ tar -xf TextWrap-Gedit-Plugin.tar.gz
+$ cd TextWrap-Gedit-Plugin
+$ test -d ~/.gnome2/gedit/plugins || mkdir ~/.gnome2/gedit/plugins
+$ cp TextWrap.py TextWrap.gedit-plugin ~/.gnome2/gedit/plugins/
+
+
+Or:
+if the commands above scare you try the minimalistic install script, that runs exactly the commands above:
+* Double click on TextWrap-Setup.sh
+
+
+TEST TEST TEST TEST IT BEFORE PUBLISHING
+The procedure for global installation:
+cd
+tar -xf TextWrap-Gedit-Plugin.tar.gz
+cd TextWrap-Gedit-Plugin
+sudo cp TextWrap.py TextWrap.gedit-plugin /usr/share/gedit-2/plugins/
+
+TEST TEST TEST TEST IT BEFORE PUBLISHING
+Automatic enable the plugin by adding the XML code to gedit-2 file:
+~/.gconf/apps/gedit-2/plugins/%gconf.xml
+by:
+<?xml version="1.0"?>
+<gconf>
+	<entry name="active-plugins" mtime="1240821449" type="list" ltype="string">
+		<li type="string">
+			<stringvalue>TextWrap</stringvalue>
+		</li>
+	</entry>
+</gconf>
+
+WIE IN SHELL XML DOKUMENTE ÄNDERN? ???????????????????????
+http://xmlstar.sourceforge.net/
+http://bashcurescancer.com/the-best-in-command-line-xml-xmlstarlet.html
+http://www.ibm.com/developerworks/xml/library/x-tipclp.html
+
+in python ??????????????????????? irgendwie naheliegend ;)
+http://www.xml.com/pub/a/2002/09/18/py.html
+
+http://packages.ubuntu.com/jaunty/python/xmldiff
+http://packages.ubuntu.com/jaunty/python/python-4suite-xml
+http://www.xmlhack.com/read.php?item=878
+http://www.oreilly.de/catalog/pythonxmlger/
+http://www.diveintopython.org/xml_processing/
+http://de.wikibooks.org/wiki/Python_unter_Linux:_XML
+
+oder gibt es eine gconf kommando schnittstelle ???????????
+http://projects.gnome.org/gconf/
+GConf comes with a command line tool called gconftool-2 that you can use to get an idea what's going on. Try this command:
+    $ (gconftool --get /apps/gedit-2/plugins/active-plugins | grep "TextWrap") || (
+    $ OLDVALUE=$(gconftool --get /apps/gedit-2/plugins/active-plugins)
+#->  [pythonconsole,spell,changecase,colorpicker,terminal,codecomment]
+    $ NEWVALUE=$(echo $OLDVALUE | sed 's/\[/\[TextWrap,/')
+#->  $NEWVALUE=[TextWrap,pythonconsole,spell,changecase,colorpicker,terminal,codecomment]
+    $ gconftool --set --type=list --list-type=string /apps/gedit-2/plugins/active-plugins $NEWVALUE
+
+http://www.gentoo.org/doc/en/articles/l-awk1.xml
+
+
+http://www.jennyandlih.com/gconf-editor-command-line
+https://www.privacy-cd.org/index.php?option=com_content&view=article&id=29&Itemid=56&lang=de&limitstart=2
+http://phpunixman.sourceforge.net/index.php/man/gconftool-2/1
+
+
+Note: This file shall be accessible outside the archiv file too

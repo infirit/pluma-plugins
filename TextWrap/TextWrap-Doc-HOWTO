@@ -1,0 +1,41 @@
+TextWrap-HOWTO
+
+this document is about how i did this plugin. it might be
+helpful finding your way to do similar, when you'll going
+to do it like me for the first time. i.e. starting from
+scratch and having no clue how to do that thing.
+
+about installing this plugin or how to help see the README file.
+
+it started with two sources of knowledge:
+
+   * the PythonPluginHowTo.html
+   * and the source code of SplitView2
+
+so naming in my plugin is some kind of a mixture from both
+
+if you are going to make errors like me in coding you will
+likely want to debug your code by writing to stdout or seeing
+the 'compiler' (python run time engine). to do so start gedit
+calling gedit from the command line by it's command name gedit.
+
+things i did different from the one or the other example:
+
+internal functions (methods) starts with a underscore ('_')
+
+i do not insert a menu, but a menu item, so the function is
+called _remove_menu_item() instead of _remove_menu()
+
+self._action_group is initialized in _insert_menu_item() so i deinitialized it in _remove_menu_item()
+= moved self._action_group = None from deactivate() to _remove_menu_item()
+
+there is no global manager reference, but a "local" inside the class: self._manager
+
+
+GtkWrapMode gedit_prefs_manager_get_wrap_mode (void);
+void        gedit_prefs_manager_set_wrap_mode (GtkWrapMode wp);
+gboolean    gedit_prefs_manager_wrap_mode_can_set (void);
+
+
+To get an idea of the XML structure of gedit menus see the
+acommpanogion file TextWrap-merged-ui-xml

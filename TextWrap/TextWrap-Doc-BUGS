@@ -1,0 +1,1 @@
+icon does not update on textwrap setting change in preferences/einstellungen dialog if no document opened (but updates correctly after first doc opened after)
