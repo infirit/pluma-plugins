@@ -9,26 +9,9 @@ http://www.tuxradar.com/content/save-time-gedit-snippets
 General procedure:
 * download the archiv
 * unpack the archiv
-* create your personal gedit plugin directory if it does not exists
+* create your personal pluma plugin directory ($HOME/.config/pluma/plugins) if it does not exists
 * copy files needed to your personal gedit plugin directory
 * activate the plugin
-
-
-The procedure in commands (after download):
-
-From inside your ( Applications -> Accesories -> ) Terminal application type:
-
-$ cd
-$ tar -xf TextWrap-Gedit-Plugin.tar.gz
-$ cd TextWrap-Gedit-Plugin
-$ test -d ~/.gnome2/gedit/plugins || mkdir ~/.gnome2/gedit/plugins
-$ cp TextWrap.py TextWrap.gedit-plugin ~/.gnome2/gedit/plugins/
-
-
-Or:
-if the commands above scare you try the minimalistic install script, that runs exactly the commands above:
-* Double click on TextWrap-Setup.sh
-
 
 TEST TEST TEST TEST IT BEFORE PUBLISHING
 The procedure for global installation:

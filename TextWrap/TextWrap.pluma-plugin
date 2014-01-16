@@ -1,4 +1,4 @@
-[Pluam Plugin]
+[Pluma Plugin]
 Loader=python
 Module=TextWrap
 IAge=2
