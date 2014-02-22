@@ -46,7 +46,7 @@ class PlumaLaTeXPlugin(pluma.Plugin):
 	# see http://ftp.acc.umu.se/pub/GNOME/sources/pluma/2.15/pluma-2.15.2.changes
 	#
 	# TODO: we should support earlier versions because e.g. Debian Etch still offers 2.14
-	_REQUIRED_PLUMA_VERSION = (2, 15, 2)
+	_REQUIRED_PLUMA_VERSION = (1, 4, 0)
 
 	# we need gtk.IconView.set_tooltip_column
 	_REQUIRED_PYGTK_VERSION = (2, 12, 0)
