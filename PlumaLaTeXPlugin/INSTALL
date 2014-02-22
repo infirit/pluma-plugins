@@ -1,0 +1,16 @@
+REQUIREMENTS
+
+ - pluma >=2.15.2
+ - Python >=2.6
+ - PyGTK >=2.12
+ - GTK+ >=2.10.14
+ - PyEnchant (optional, needed for LaTeX spell checking)
+ - Poppler Python Bindings (optional, needed for embedded PDF preview)
+
+INSTALLATION
+
+Just copy the contents of the archive (folder 'PlumaLaTeXPlugin' and file
+'PlumaLaTeXPlugin.pluma-plugin') to '~/.config/pluma/plugins' where '~'
+is your home directory. You may have to create the folder 'plugins'.
+
+Restart pluma and activate the plugin in the plugins configuration.
