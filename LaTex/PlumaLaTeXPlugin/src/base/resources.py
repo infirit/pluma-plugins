@@ -21,7 +21,7 @@
 """
 base.resources
 
-Either the plugin is installed in ~/.gnome2/pluma/plugins/PlumaLaTeXPlugin as
+Either the plugin is installed in ~/.config/pluma/plugins/PlumaLaTeXPlugin as
 described in INSTALL or it's installed system-wide, e.g. by a .deb package.
 For a system-wide installation everything but the pixmaps is copied to
 /usr/lib/pluma-2/plugins/PlumaLaTeXPlugin. And FHS requires to place the
@@ -49,7 +49,7 @@ _log = logging.getLogger("resources")
 # TODO: switch to pluma.Plugin.get_data_dir()
 
 _PATH_SYSTEM = "/usr/lib/pluma-2/plugins/PlumaLaTeXPlugin"
-_PATH_USER = expanduser("~/.gnome2/pluma/plugins/PlumaLaTeXPlugin")
+_PATH_USER = expanduser("~/.config/pluma/plugins/PlumaLaTeXPlugin")
 
 # FHS-compliant location for pixmaps
 _PATH_SHARE = "/usr/share/pluma-2/plugins/PlumaLaTeXPlugin"
