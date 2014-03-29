@@ -1,4 +1,4 @@
-import gedit
+import pluma
 import gtk
 
 import gobject
@@ -38,8 +38,8 @@ class PluginHelper:
         self.same_document = {}
 
         # I hardly even know how this works, but it gets our encoding.
-        try: self.encoding = gedit.encoding_get_current()
-        except: self.encoding = gedit.gedit_encoding_get_current()
+        try: self.encoding = pluma.encoding_get_current()
+        except: self.encoding = pluma.pluma_encoding_get_current()
         
     def deactivate(self):        
         self.remove_menu_item()
@@ -110,12 +110,12 @@ class PluginHelper:
 
             # If we are viewing a separate file, then just get that document
             if (current_tab in self.alt_views):
-                new_view = gedit.View(self.alt_views[current_tab])#.get_children()[0]
+                new_view = pluma.View(self.alt_views[current_tab])#.get_children()[0]
 
             # Otherwise, just share the same document as the active View.
             # This makes sure changes to either side reflect in the other side.
             else:
-                new_view = gedit.View(current_document)
+                new_view = pluma.View(current_document)
 
             # Second scrolled window.
             sw2 = gtk.ScrolledWindow()
@@ -289,9 +289,9 @@ class PluginHelper:
 
         self.split_views[current_tab].remove(self.split_views[current_tab].get_children()[1])
 
-        new_document = gedit.Document()#.gedit_document_new()
+        new_document = pluma.Document()#.pluma_document_new()
         new_document.load("file://" + source.replace(" ", "%20"), self.encoding, 1, True)
-        new_view = gedit.View(new_document)#.gedit_view_new(new_document)
+        new_view = pluma.View(new_document)#.pluma_view_new(new_document)
 
         new_document.connect("mark-set", self.update_line_column_data)
 
@@ -444,9 +444,9 @@ class PluginHelper:
         
         panel.remove_item(self.results_view)
 
-class SplitViewPlugin(gedit.Plugin):
+class SplitViewPlugin(pluma.Plugin):
     def __init__(self):
-        gedit.Plugin.__init__(self)
+        pluma.Plugin.__init__(self)
         self.instances = {}
         
     def activate(self, window):
