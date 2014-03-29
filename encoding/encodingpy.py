@@ -2,7 +2,7 @@
 #  Open the document in a different encoding
 #  Dependence: python >=2.5, pygtk
 # 
-#  Install: copy encoding.gedit-plugin and encodingpy.py to ~/.gnome2/gedit/plugins/
+#  Install: copy encoding.pluma-plugin and encodingpy.py to ~/.local/share/pluma/plugins/
 # 
 #  Copyright (C) 2008 Vladislav Gorbunov
 #   
@@ -27,18 +27,23 @@
 from gettext import gettext as _
 
 import gtk
-import gedit
+import pluma
 import functools
-import gconf
+import subprocess
+from ast import literal_eval
 
 # All encodings names
-enclist_func = lambda i=0: [gedit.encoding_get_from_index(i)] + enclist_func(i+1) if gedit.encoding_get_from_index(i) else []
+enclist_func = lambda i=0: [pluma.encoding_get_from_index(i)] + enclist_func(i+1) if pluma.encoding_get_from_index(i) else []
 
-shown_enc = gconf.client_get_default().get("/apps/gedit-2/preferences/encodings/shown_in_menu")
+# FIXME This is a hack to workaround missing gsettings
+cmd = ['gsettings', 'get', 'org.mate.pluma', 'shown-in-menu-encodings']
+stdout, stderr = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT).communicate()
+shown_enc = literal_eval(stdout)
+
 # show the full list of encodings if not they not configured in the Open/Save Dialog
-enclist = sorted(([gedit.encoding_get_from_charset(enc.to_string()) for enc in shown_enc.get_list()]
+enclist = sorted(([pluma.encoding_get_from_charset(enc) for enc in shown_enc]
                  if shown_enc else enclist_func())
-                  + [gedit.encoding_get_utf8()], key=lambda enc: enc.to_string())
+                  + [pluma.encoding_get_utf8()], key=lambda enc: enc)
 
 ui_str = """<ui>
           <menubar name="MenuBar">
@@ -99,9 +104,9 @@ class EncodingWindowHelper:
             #self._window.create_tab_from_uri(uri, enc, line_pos+1, False, True)
     
 
-class EncodingPlugin(gedit.Plugin):
+class EncodingPlugin(pluma.Plugin):
     def __init__(self):
-        gedit.Plugin.__init__(self)
+        pluma.Plugin.__init__(self)
         self._instances = {}
 
     def activate(self, window):
