@@ -1,4 +1,4 @@
-import gedit
+import pluma
 import gtk
 import gtk.glade
 import os.path
@@ -20,9 +20,9 @@ ui_str = """<ui>
 
 
 # Plugin-class
-class AccelPlugin(gedit.Plugin):
+class AccelPlugin(pluma.Plugin):
     def __init__(self):
-        gedit.Plugin.__init__(self)
+        pluma.Plugin.__init__(self)
         self._instances = dict()
     
 
