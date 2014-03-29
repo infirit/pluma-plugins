@@ -1,0 +1,7 @@
+Simply copy editshortcut.gedit-plugin and the editshortcut/ directory into 
+~/.gnome2/gedit/plugins: like
+
+$> cp -R editshortcut/ editshortcut.gedit-plugin ~/gnome2/gedit/plugins
+
+
+
